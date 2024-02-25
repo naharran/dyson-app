@@ -1,0 +1,5 @@
+build
+node_modules
+tsconfig.json
+vite.config.js
+tailwind.config.js
