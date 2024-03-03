@@ -4,7 +4,6 @@ type HomeProps = {
   onClick: () => void;
 };
 const Home = ({ onClick }: HomeProps) => {
-   
   return (
     <div className="flex flex-col justify-center mt-20">
       <Content />
