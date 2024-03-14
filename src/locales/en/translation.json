@@ -1,0 +1,39 @@
+{
+  "test": "tesss",
+  "home": {
+    "factList": {
+      "factNum1": {
+        "title": "Restore deleted mails.",
+        "text": "Don’t worry, you can recover your deleted mail up until 30 days."
+      },
+      "factNum2": {
+        "title": "Single-use procedure.",
+        "text": "We aim for optimal outcomes, ensuring that you won't have to repeat the process multiple times"
+      },
+      "factNum3": {
+        "title": "Quick and efficient.",
+        "text": "Simply grant us access to your mail, and then sit back and relax while we handle the cleaning for you."
+      }
+    },
+    "callToAction": {
+      "title": "Reclaim your inbox, ",
+      "color": "today.",
+      "action": "Get started",
+      "helpText": "Need help setting up?",
+      "support": "Contact support >"
+    },
+    "footer": {
+      "copyWrite": "© 2024 Reclaim. All Rights Reserved."
+    }
+  },
+  "loadingPage": {
+    "title": "Loading your data...",
+    "subTitle": "this might take a few minuets.",
+    "remembers": "Here are some friendly reminders-",
+    "remembersList": {
+      "rem1": "☝🏻 You won't lose emails from private senders.",
+      "rem2": "🔄 You can rejoin lists in case you regret.",
+      "rem3": "🧘‍♀️ An empty mailbox reduces digital stress."
+    }
+  }
+}

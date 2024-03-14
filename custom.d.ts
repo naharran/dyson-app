@@ -5,3 +5,5 @@ declare module "*.svg" {
     React.SVGProps<SVGSVGElement> & { title?: string }
   >;
 }
+declare module "react-grid-carousel";
+declare module "react-lottie";

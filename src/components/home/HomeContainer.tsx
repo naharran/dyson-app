@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import NavBar from "../NavBar";
 import Home from "./Home";
+import HomeFooter from "./foter/Foter";
 
 const HomeContainer = () => {
   const naviget = useNavigate();
@@ -23,9 +24,10 @@ const HomeContainer = () => {
     }, 1000);
   };
   return (
-    <div className="bg-home flex flex-col h-full">
+    <div className="flex flex-col h-full">
       <NavBar onClick={openAuth} />
       <Home onClick={openAuth} />
+      <HomeFooter />
     </div>
   );
 };
