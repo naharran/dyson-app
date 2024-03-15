@@ -27,16 +27,17 @@ const sizes = {
 };
 export const sliderTheme = defineMultiStyleConfig({ sizes });
 const ReSlider = () => {
-  const [sliderValue, setSliderValue] = useState(5);
+  const [sliderValue, setSliderValue] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
   return (
     <div className="flex w-full flex-col items-center">
       <Slider
         size="xl"
         id="slider"
-        defaultValue={5}
+        defaultValue={0}
         min={0}
         max={100}
+        step={25}
         colorScheme="blue"
         onChange={(v) => setSliderValue(v)}
         onMouseEnter={() => setShowTooltip(true)}

@@ -35,5 +35,12 @@
       "rem2": "🔄 You can rejoin lists in case you regret.",
       "rem3": "🧘‍♀️ An empty mailbox reduces digital stress."
     }
+  },
+  "scanPage": {
+    "tails": {
+      "trash": { "text": "marketial emails found" },
+      "space": { "text": "These emails use up", "subText": "of storage." },
+      "mail": { "text": "You’re subscribed to", "subText": "newsletters." }
+    }
   }
 }

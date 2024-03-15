@@ -33,7 +33,9 @@ const Home = ({ onClick }: HomeProps) => {
         <div className="flex justify-evenly mb-10 w-full">
           <VideoPlayerContainer />
         </div>
-        <div className="flex flex-col items-start">{createFactTail()}</div>
+        <div className="flex flex-col items-start ms-8 me-8">
+          {createFactTail()}
+        </div>
         <div className="flex flex-col items-start">
           <CarouselTest />
         </div>

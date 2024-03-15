@@ -1,3 +1,5 @@
+import { FunctionComponent, SVGProps } from "react";
+
 export interface NewsletterInfo {
   domain: string;
   unsubscribe_link: string;
@@ -17,3 +19,8 @@ export enum UnsubscribeStatus {
   "failed" = 1,
   "success" = 2,
 }
+export type SvgIcon = FunctionComponent<
+  SVGProps<SVGSVGElement> & {
+    title?: string | undefined;
+  }
+>;
