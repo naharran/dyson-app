@@ -10,8 +10,12 @@ import useScanInfo from "../../hooks/useScaninfo";
 import { ReadStatus } from "../type";
 type ScanInfoContent = {
   onSlideChange: (duration: ReadStatus) => void;
+  handelStarCleanup: () => void;
 };
-const ScanInfoContent = ({ onSlideChange }: ScanInfoContent) => {
+const ScanInfoContent = ({
+  onSlideChange,
+  handelStarCleanup,
+}: ScanInfoContent) => {
   const { scan } = useScanInfo();
   const { t } = useTranslation();
   const handleSliderChange = (value: number): void => {
@@ -56,7 +60,11 @@ const ScanInfoContent = ({ onSlideChange }: ScanInfoContent) => {
       </div>
 
       <div className="w-full ms-3 me-3 flex grow flex-col-reverse items-center">
-        <Button width={"88%"} variant={"round"} onClick={() => console.log()}>
+        <Button
+          width={"88%"}
+          variant={"round"}
+          onClick={() => handelStarCleanup()}
+        >
           Clean my inbox
         </Button>
       </div>

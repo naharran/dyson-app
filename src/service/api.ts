@@ -1,5 +1,5 @@
-import axios from "axios";
-import { ScanResultsProps } from "../components/type";
+import axios, { AxiosResponse } from "axios";
+import { ReadStatus, ScanResultsProps } from "../components/type";
 import { scanMock } from "../mock";
 
 const baseURL = import.meta.env.VITE_FUNCTIONS_URL;
@@ -23,4 +23,15 @@ export const getResult = async (): Promise<ScanResultsProps> => {
   //   .get(`${baseURL}/getResults`, { withCredentials: true })
   //   .then((res) => res.data)
   //   .catch((err) => err);
+};
+export const startStatusCheck = async (
+  readStatus: ReadStatus,
+): Promise<AxiosResponse<void>> => {
+  const body = {
+    readStatus,
+  };
+  const res = await axios.post(`${baseURL}/StatusCheck`, body, {
+    withCredentials: true,
+  });
+  return res.data;
 };
