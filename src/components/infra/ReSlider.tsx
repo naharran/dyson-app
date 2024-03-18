@@ -25,10 +25,17 @@ const sizes = {
     }),
   }),
 };
+type ReSliderProps = {
+  onSliderChange: (number: number) => void;
+};
 export const sliderTheme = defineMultiStyleConfig({ sizes });
-const ReSlider = () => {
+const ReSlider = ({ onSliderChange }: ReSliderProps) => {
   const [sliderValue, setSliderValue] = useState(0);
   const [showTooltip, setShowTooltip] = useState(false);
+  const handleSliderChnage = (value: number): void => {
+    setSliderValue(value);
+    onSliderChange(value);
+  };
   return (
     <div className="flex w-full flex-col items-center">
       <Slider
@@ -39,7 +46,7 @@ const ReSlider = () => {
         max={100}
         step={25}
         colorScheme="blue"
-        onChange={(v) => setSliderValue(v)}
+        onChange={(v) => handleSliderChnage(v)}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
         color={"blue"}

@@ -7,21 +7,33 @@ import { ReactComponent as Icon2 } from "@assets/Icon_2.svg";
 import { ReactComponent as Icon3 } from "@assets/Icon_3.svg";
 import { useTranslation } from "react-i18next";
 import useScanInfo from "../../hooks/useScaninfo";
+import { ReadStatus } from "../type";
 type ScanInfoContent = {
-  totalEmailNumber: string;
-  totalNewsLetterEmail: string;
-  totalEmailSize: string;
-  totalNewsLetter: string;
+  onSlideChange: (duration: ReadStatus) => void;
 };
-const ScanInfoContent = () => {
+const ScanInfoContent = ({ onSlideChange }: ScanInfoContent) => {
   const { scan } = useScanInfo();
   const { t } = useTranslation();
+  const handleSliderChange = (value: number): void => {
+    if (value === 0) {
+      onSlideChange(ReadStatus.notInUse);
+    }
+    if (value > 0 && value <= 25) {
+      onSlideChange(ReadStatus.Neglected);
+    }
+    if (value > 25 && value <= 50) {
+      onSlideChange(ReadStatus.Inactive);
+    }
+    if (value > 50) {
+      onSlideChange(ReadStatus.Active);
+    }
+  };
   return (
     <>
       <ScanTitle emailNumber={scan?.totalEmailScan.toString()} />
       <div className="flex ms-3 me-3 flex-col items-center justify-center text-16 font-Rubik mb-10 text-black text-center mt-10 w-full">
         <p> Choose what you’d like to delete. </p>
-        <ReSlider />
+        <ReSlider onSliderChange={handleSliderChange} />
       </div>
       <div className="flex flex-col w-full">
         <TailContainer

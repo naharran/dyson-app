@@ -15,12 +15,15 @@ interface IScanContextValue {
   totalEmailSize: string;
   totalNewsLetterFound: number;
   totalNewsLetterMail: number;
+  duration: ReadStatus;
 }
 
-type ScanContextAction = {
-  type: "UPDATE_DATA";
-  payload: { data: NewsletterInfo[]; totalEmailScan: number };
-};
+type ScanContextAction =
+  | {
+      type: "UPDATE_DATA";
+      payload: { data: NewsletterInfo[]; totalEmailScan: number };
+    }
+  | { type: "SET_SCAN_DURATION"; payload: { duration: ReadStatus } };
 
 const initialState: IScanContextValue = {
   data: [],
@@ -28,6 +31,7 @@ const initialState: IScanContextValue = {
   totalEmailSize: "",
   totalNewsLetterFound: 0,
   totalNewsLetterMail: 0,
+  duration: ReadStatus.notInUse,
 };
 
 const reducer = (
@@ -43,6 +47,18 @@ const reducer = (
         totalNewsLetterFound: totals.totalNewsLetterMail,
         totalEmailSize: totals.totalEmailSize,
         totalNewsLetterMail: action.payload.data.length,
+        duration: state.duration,
+      };
+    }
+    case "SET_SCAN_DURATION": {
+      const calTotal = filterScanMail(state.data, action.payload.duration);
+      return {
+        totalEmailScan: state.totalEmailScan,
+        data: state.data,
+        totalNewsLetterFound: calTotal.totalNewsLetterMail,
+        totalEmailSize: calTotal.totalEmailSize,
+        totalNewsLetterMail: state.data.length,
+        duration: action.payload.duration,
       };
     }
     default:

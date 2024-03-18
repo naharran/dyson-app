@@ -7,7 +7,7 @@ export interface NewsletterInfo {
   restore: "pending" | "true";
   id: string;
   userEmail: string;
-  readStatus?: ReadStatus;
+  readStatus: ReadStatus;
   lastReadDate?: string;
   totalEmails: number;
   emailFrequency?: number;

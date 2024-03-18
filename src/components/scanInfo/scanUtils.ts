@@ -9,7 +9,7 @@ export const filterScanMail = (
 ): FilterScanMailType => {
   let totalNewsLetterMail: number = 0;
   data.forEach((mail) => {
-    if (mail.readStatus === level) {
+    if (mail.readStatus === level || mail.readStatus < level) {
       totalNewsLetterMail += mail.totalEmails;
     }
   });
