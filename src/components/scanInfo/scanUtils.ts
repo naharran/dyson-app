@@ -3,7 +3,7 @@ type FilterScanMailType = {
   totalNewsLetterMail: number;
   totalEmailSize: string;
 };
-function formatSize(kb: number) {
+export function formatSize(kb: number) {
   const kbToMb = kb / 1024;
   const kbToGb = kbToMb / 1024;
   const kbToTb = kbToGb / 1024;

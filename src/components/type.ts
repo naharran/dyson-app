@@ -20,6 +20,10 @@ export type ScanResultsProps = {
   emailsDeleted?: number;
   newslettersProcessed?: number;
 };
+export type CalcResult = {
+  clearedSize: string;
+};
+export type ScanResultsCalc = ScanResultsProps & CalcResult;
 export enum UnsubscribeStatus {
   "pending" = 0,
   "failed" = 1,

@@ -42,5 +42,13 @@
       "space": { "text": "These emails use up", "subText": "of storage." },
       "mail": { "text": "You’re subscribed to", "subText": "newsletters." }
     }
+  },
+  "info": {
+    "title": "Congrats! 🎉",
+    "subTitle": "Look at what we achieved-",
+    "deleted": "emails were deleted",
+    "cleared": "were cleared from storage.",
+    "unsubscribed": "unsubscribed newsletters",
+    "newsletters": "newsletters frequented."
   }
 }

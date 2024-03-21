@@ -8,10 +8,10 @@ export const checkStatus = async (): Promise<{
   initLength: number;
   idsLength: number;
 }> => {
-  return axios
-    .get(`${baseURL}/checkStatus`, { withCredentials: true })
-    .then((res) => res.data)
-    .catch((err) => err);
+  const res = await axios.get(`${baseURL}/checkStatus`, {
+    withCredentials: true,
+  });
+  return res.data;
 };
 export const getResult = async (): Promise<ScanResultsProps> => {
   return {
@@ -19,10 +19,9 @@ export const getResult = async (): Promise<ScanResultsProps> => {
     totalNewsLettersFound: 1000,
     totalEmailScan: 888888,
   };
-  // return axios
-  //   .get(`${baseURL}/getResults`, { withCredentials: true })
-  //   .then((res) => res.data)
-  //   .catch((err) => err);
+  //    const res = await axios
+  //     .get(`${baseURL}/getResults`, { withCredentials: true })
+  //  return res.data
 };
 export const startStatusCheck = async (
   readStatus: ReadStatus,
