@@ -10,8 +10,9 @@ import { t } from "i18next";
 import TailContainer from "../tail/tailContainer";
 import { ReactComponent as Trash } from "@assets/Icon trash.svg";
 import { ReactComponent as Icon2 } from "@assets/Icon_2.svg";
-import { ReactComponent as Icon3 } from "@assets/Icon_3.svg";
+
 import { formatSize } from "../scanInfo/scanUtils";
+import UnsubscribeList from "./UnsubscribeList";
 
 const Info = () => {
   const { res, error, isLoading, refetch } = useInfoResults();
@@ -46,10 +47,9 @@ const Info = () => {
           number={newsletterData?.clearedSize ?? "0MB"}
           text={t("info.cleared")}
         />
-        <TailContainer
-          Icon={Icon3}
-          number={newsletterData?.totalNewsLettersFound.toString() ?? "0"}
-          text={t("info.unsubscribed")}
+        <UnsubscribeList
+          totalNewsLettersFound={newsletterData?.totalNewsLettersFound ?? 0}
+          data={newsletterData?.data ?? []}
         />
       </div>
     </div>

@@ -6,6 +6,9 @@ export default {
       width: {
         90: "90%",
       },
+      padding: {
+        unset: "unset",
+      },
       backgroundSize: {
         100: "100% 100%",
       },
