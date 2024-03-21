@@ -6,6 +6,7 @@ import Info from "./components/info/info";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SettingPage from "./components/setingPage/SetingPage";
 import ScanInfo from "./components/scanInfo/ScanInfo";
+import { ScanProvider } from "./components/scanInfo/scanContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -16,7 +17,14 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeContainer />} />
           <Route path="/standBy" element={<SettingPage />} />
-          <Route path="/scan" element={<ScanInfo />} />
+          <Route
+            path="/scan"
+            element={
+              <ScanProvider>
+                <ScanInfo />
+              </ScanProvider>
+            }
+          />
           <Route path="/loading" element={<LoaderPage />} />
           <Route path="/info" element={<Info />} />
           <Route path="/auth" element={<Auth />} />

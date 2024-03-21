@@ -1,18 +1,28 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import NewsLetterList from "./NewsLetterList";
+
 import ScanMetaData from "./ScanMetaData";
 import useInfoResults from "../../hooks/useGetInfoResults";
 import { useEffect, useState } from "react";
-import { NewsletterInfo } from "../type";
-import { removeDuplicates } from "./infoUtils";
+import { ScanResultsCalc } from "../type";
+
+import ResoluteLoader from "../ResluteLodaer";
+import { t } from "i18next";
+import TailContainer from "../tail/tailContainer";
+import { ReactComponent as Trash } from "@assets/Icon trash.svg";
+import { ReactComponent as Icon2 } from "@assets/Icon_2.svg";
+import { ReactComponent as Icon3 } from "@assets/Icon_3.svg";
+import { formatSize } from "../scanInfo/scanUtils";
 
 const Info = () => {
   const { res, error, isLoading, refetch } = useInfoResults();
-  const [newsletterData, setNewsletterData] = useState<NewsletterInfo[]>([]);
+  const [newsletterData, setNewsletterData] = useState<ScanResultsCalc>();
   useEffect(() => {
     if (res) {
-      const updateNews = removeDuplicates(newsletterData, res.data);
-      setNewsletterData(updateNews);
+      const clearedSize = res?.emailsDeleted
+        ? formatSize(res?.emailsDeleted * 100)
+        : "0MB";
+      // const updateNews = removeDuplicates(newsletterData?.data?? [], res.data);
+      setNewsletterData({ ...res, clearedSize });
     }
     setTimeout(() => {
       if (res?.newslettersProcessed !== res?.totalNewsLettersFound) {
@@ -20,16 +30,28 @@ const Info = () => {
       }
     }, 5000);
   }, [res]);
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <ResoluteLoader />;
   if (error) return <div>Error</div>;
   return (
-    <div className="flex flex-col items-center">
-      <ScanMetaData
-        totalNewsLettersFound={res?.totalNewsLettersFound ?? 0}
-        emailsDeleted={res?.emailsDeleted ?? 0}
-        freeSize={99}
-      />
-      <NewsLetterList data={newsletterData ?? []} />
+    <div className="flex flex-col items-center ms-5 me-5 h-full">
+      <ScanMetaData />
+      <div className="flex flex-col w-full">
+        <TailContainer
+          Icon={Trash}
+          number={newsletterData?.emailsDeleted?.toString() ?? "0"}
+          text={t("info.deleted")}
+        />
+        <TailContainer
+          Icon={Icon2}
+          number={newsletterData?.clearedSize ?? "0MB"}
+          text={t("info.cleared")}
+        />
+        <TailContainer
+          Icon={Icon3}
+          number={newsletterData?.totalNewsLettersFound.toString() ?? "0"}
+          text={t("info.unsubscribed")}
+        />
+      </div>
     </div>
   );
 };

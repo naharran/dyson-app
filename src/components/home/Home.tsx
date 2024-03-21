@@ -4,7 +4,6 @@ import Content from "./Content";
 import FactTail from "./FactTail";
 import { factList } from "./FactTailConst";
 import { useTranslation } from "react-i18next";
-import CarouselTest from "./testimoniale/CarouselTest";
 import CallToAction from "./buttomCallAction/CallToAction";
 
 type HomeProps = {
@@ -36,9 +35,7 @@ const Home = ({ onClick }: HomeProps) => {
         <div className="flex flex-col items-start ms-8 me-8">
           {createFactTail()}
         </div>
-        <div className="flex flex-col items-start">
-          <CarouselTest />
-        </div>
+        <div className="flex flex-col items-start"></div>
         <CallToAction onClick={onClick} />
       </div>
     </div>

@@ -37,7 +37,7 @@ const LoaderPage = () => {
         if (initLength !== idsLength) {
           setTimeout(() => fetchData(), 5000);
         } else {
-          naviget("/info");
+          naviget("/scan");
         }
       } catch (err) {
         console.log(err);

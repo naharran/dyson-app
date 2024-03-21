@@ -1,23 +1,11 @@
-type ScanMetaDataProps = {
-  totalNewsLettersFound: number;
-  emailsDeleted: number;
-  freeSize: number;
-};
-const ScanMetaData = ({
-  totalNewsLettersFound,
-  emailsDeleted,
-  freeSize,
-}: ScanMetaDataProps) => {
+import { useTranslation } from "react-i18next";
+
+const ScanMetaData = () => {
+  const { t } = useTranslation();
   return (
-    <div className="flex flex-col  mb-5 mt-5">
-      <p> scan info</p>
-      <div className="flex">
-        <span className="ml-1">Total email deleted: {emailsDeleted}</span>
-        <span className="mx-1">
-          Number of news letters found: {totalNewsLettersFound}
-        </span>
-        <span className="mr-1">Total size clean: {freeSize} </span>
-      </div>
+    <div className="flex flex-col  mb-5 mt-5 text-24 font-Rubik text-center text-black">
+      <p>{t("info.title")} </p>
+      <p className="text-16">{t("info.subTitle")}</p>
     </div>
   );
 };
