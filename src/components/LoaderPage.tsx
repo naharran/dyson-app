@@ -44,7 +44,7 @@ const LoaderPage = () => {
       }
     }
     fetchData();
-  }, []);
+  }, [naviget]);
   return (
     <div className="flex flex-col h-full items-center">
       <p className="mt-10 text-24 text-black">{t("loadingPage.title")} </p>

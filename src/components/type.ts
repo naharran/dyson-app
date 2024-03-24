@@ -2,13 +2,13 @@ import { FunctionComponent, SVGProps } from "react";
 
 export interface NewsletterInfo {
   domain: string;
-  unsubscribe_link: string;
+  unsubscribe_link: string | null;
   unsubscribe_status: number;
   restore: "pending" | "true";
   id: string;
   userEmail: string;
   readStatus: ReadStatus;
-  lastReadDate?: string;
+  lastReadDate?: string | number;
   totalEmails: number;
   emailFrequency?: number;
   readEmails: number;

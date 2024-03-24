@@ -1,4 +1,3 @@
-import Button from "../Button";
 import { UnsubscribeStatus } from "../type";
 
 type NewsLetterProps = {
@@ -15,13 +14,17 @@ const NewsLetter = ({
     window.open(unsubscribe_link);
   };
   return (
-    <div className="flex w-full justify-evenly mt-5">
-      <span> {domain}</span>
-      <span>
-        {" "}
-        Unsubscribe status: {unsubscribe_status === 2 ? "true" : "false"}
-      </span>
-      <Button value="Resubscribe" onClick={() => openResubscribe()} />
+    <div className="flex w-full justify-between text-14 font-Rubik text-center text-black mt-5">
+      <div className="overflow-hidden text-nowrap text-ellipsis w-[154px] flex">
+        <span className="underline"> {domain}</span>
+      </div>
+      <div onClick={() => openResubscribe()}>
+        {unsubscribe_status === UnsubscribeStatus.success ? (
+          <span className="text-grey500"> SUBSCRIBE</span>
+        ) : (
+          <span className="text-red500"> UNSUBSCRIBE</span>
+        )}
+      </div>
     </div>
   );
 };

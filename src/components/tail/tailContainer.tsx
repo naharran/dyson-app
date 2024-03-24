@@ -6,11 +6,21 @@ export type TailContainerProps = {
   number: string;
   text: string;
   subText?: string;
+  useStyle?: boolean;
 };
 
-const TailContainer = ({ Icon, number, text, subText }: TailContainerProps) => {
+const TailContainer = ({
+  Icon,
+  number,
+  text,
+  subText,
+  useStyle = true,
+}: TailContainerProps) => {
+  const style = useStyle
+    ? "flex shadow-lg justify-start mt-10 rounded-b-2xl"
+    : "";
   return (
-    <div className="flex shadow-lg justify-start mt-10 rounded-b-2xl">
+    <div className={style}>
       <div className="flex py-2.5 ms-8">
         <Icon />
         <TailContent number={number} text={text} subText={subText} />

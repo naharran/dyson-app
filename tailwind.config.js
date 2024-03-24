@@ -6,6 +6,9 @@ export default {
       width: {
         90: "90%",
       },
+      padding: {
+        unset: "unset",
+      },
       backgroundSize: {
         100: "100% 100%",
       },
@@ -13,6 +16,8 @@ export default {
         home: "#F1F7ED",
         textBlue: "#481AFF",
         greyText: "#595B60",
+        grey500: "#E7E9EF",
+        red500: "#EE2543",
       },
       fontFamily: {
         Rubik: "Rubik",

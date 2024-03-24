@@ -11,7 +11,7 @@ const NewsLetterList = ({ data }: NewsLetterListProps) => {
         <NewsLetter
           key={index + item.domain}
           domain={item.domain}
-          unsubscribe_link={item.unsubscribe_link}
+          unsubscribe_link={item?.unsubscribe_link ?? ""}
           unsubscribe_status={item.unsubscribe_status}
         />,
       );
