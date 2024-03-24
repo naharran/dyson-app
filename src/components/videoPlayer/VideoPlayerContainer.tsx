@@ -11,7 +11,7 @@ const VideoPlayerContainer = () => {
         player.destroy();
       }
     };
-  }, [player]);
+  }, []);
   return (
     <div className="flex w-full">
       <Player player={player} />
