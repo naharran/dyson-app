@@ -17,6 +17,7 @@ import UnsubscribeList from "./UnsubscribeList";
 const Info = () => {
   const { res, error, isLoading, refetch } = useInfoResults();
   const [newsletterData, setNewsletterData] = useState<ScanResultsCalc>();
+  const [dataReady, setDataReady] = useState(false);
   useEffect(() => {
     if (res) {
       const clearedSize = res?.emailsDeleted
@@ -26,13 +27,16 @@ const Info = () => {
       setNewsletterData({ ...res, clearedSize });
     }
     setTimeout(() => {
-      if (res?.newslettersProcessed !== res?.totalNewsLettersFound) {
+      if (res?.newslettersProcessed !== res?.totalNewsletterProcessed) {
         refetch();
+      } else {
+        setDataReady(true);
       }
     }, 5000);
   }, [res]);
   if (isLoading) return <ResoluteLoader />;
   if (error) return <div>Error</div>;
+  if (!dataReady) return <ResoluteLoader />;
   return (
     <div className="flex flex-col items-center ms-5 me-5 h-full">
       <ScanMetaData />

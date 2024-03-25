@@ -19,6 +19,7 @@ export type ScanResultsProps = {
   totalEmailScan: number;
   emailsDeleted?: number;
   newslettersProcessed?: number;
+  totalNewsletterProcessed?: number;
 };
 export type CalcResult = {
   clearedSize: string;
