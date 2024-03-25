@@ -31,7 +31,7 @@ const initialState: IScanContextValue = {
   totalEmailSize: "",
   totalNewsLetterFound: 0,
   totalNewsLetterMail: 0,
-  duration: ReadStatus.notInUse,
+  duration: ReadStatus.Active,
 };
 
 const reducer = (

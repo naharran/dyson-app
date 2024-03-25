@@ -12,7 +12,9 @@ export const checkStatus = async (): Promise<{
   });
   return res.data;
 };
-export const getResult = async (): Promise<ScanResultsProps> => {
+export const getResult = async (
+  duration: number,
+): Promise<ScanResultsProps> => {
   // return {
   //   data: [
   //     {
@@ -800,7 +802,8 @@ export const getResult = async (): Promise<ScanResultsProps> => {
   //   totalNewsLettersFound: 56,
   //   totalEmailScan: 385,
   // };
-  const res = await axios.get(`${baseURL}getResults`, {
+  const url = `${baseURL}getResults?duration=${duration}`;
+  const res = await axios.get(url, {
     withCredentials: true,
   });
   return res.data;

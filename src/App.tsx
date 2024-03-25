@@ -13,24 +13,19 @@ function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="h-full">
-        <Routes>
-          <Route path="/" element={<HomeContainer />} />
-          <Route path="/standBy" element={<SettingPage />} />
-          <Route
-            path="/scan"
-            element={
-              <ScanProvider>
-                <ScanInfo />
-              </ScanProvider>
-            }
-          />
-          <Route path="/loading" element={<LoaderPage />} />
-          <Route path="/info" element={<Info />} />
-          <Route path="/auth" element={<Auth />} />
-        </Routes>
-        {/* END: routes */}
-      </div>
+      <ScanProvider>
+        <div className="h-full">
+          <Routes>
+            <Route path="/" element={<HomeContainer />} />
+            <Route path="/standBy" element={<SettingPage />} />
+            <Route path="/scan" element={<ScanInfo />} />
+            <Route path="/loading" element={<LoaderPage />} />
+            <Route path="/info" element={<Info />} />
+            <Route path="/auth" element={<Auth />} />
+          </Routes>
+          {/* END: routes */}
+        </div>
+      </ScanProvider>
     </QueryClientProvider>
   );
 }
