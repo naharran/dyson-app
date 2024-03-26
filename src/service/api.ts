@@ -804,8 +804,8 @@ export const getResult = async (
   //   totalEmailScan: 385,
   // };
   const url = scan
-    ? `${baseURL}getResults?duration=${duration},scan=${true}`
-    : `${baseURL}getResults?duration=${duration},scan=${false}`;
+    ? `${baseURL}getResults?duration=${duration}&scan=${true}`
+    : `${baseURL}getResults?duration=${duration}&scan=${false}`;
   const res = await axios.get(url, {
     withCredentials: true,
   });
