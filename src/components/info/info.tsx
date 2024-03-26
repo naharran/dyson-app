@@ -15,7 +15,7 @@ import { formatSize } from "../scanInfo/scanUtils";
 import UnsubscribeList from "./UnsubscribeList";
 
 const Info = () => {
-  const { res, error, isLoading, refetch } = useInfoResults();
+  const { res, error, isLoading, refetch } = useInfoResults(true);
   const [newsletterData, setNewsletterData] = useState<ScanResultsCalc>();
   const [dataReady, setDataReady] = useState(false);
   useEffect(() => {

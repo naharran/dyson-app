@@ -14,6 +14,7 @@ export const checkStatus = async (): Promise<{
 };
 export const getResult = async (
   duration: number,
+  scan: boolean,
 ): Promise<ScanResultsProps> => {
   // return {
   //   data: [
@@ -802,7 +803,9 @@ export const getResult = async (
   //   totalNewsLettersFound: 56,
   //   totalEmailScan: 385,
   // };
-  const url = `${baseURL}getResults?duration=${duration}`;
+  const url = scan
+    ? `${baseURL}getResults?duration=${duration},scan=${true}`
+    : `${baseURL}getResults?duration=${duration},scan=${false}`;
   const res = await axios.get(url, {
     withCredentials: true,
   });
