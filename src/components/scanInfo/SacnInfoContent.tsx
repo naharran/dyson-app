@@ -8,6 +8,7 @@ import { ReactComponent as Icon3 } from "@assets/Icon_3.svg";
 import { useTranslation } from "react-i18next";
 import useScanInfo from "../../hooks/useScaninfo";
 import { ReadStatus } from "../type";
+import { useState } from "react";
 type ScanInfoContent = {
   onSlideChange: (duration: ReadStatus) => void;
   handelStarCleanup: () => void;
