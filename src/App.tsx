@@ -21,7 +21,7 @@ function App() {
             <Route path="/scan" element={<ScanInfo />} />
             <Route path="/loading" element={<LoaderPage />} />
             <Route path="/info" element={<Info />} />
-            <Route path="/auth:processStarted" element={<Auth />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
           {/* END: routes */}
         </div>
