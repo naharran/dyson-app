@@ -42,7 +42,7 @@ const reducer = (
     case "UPDATE_DATA": {
       const totals = filterScanMail(action.payload.data, ReadStatus.notInUse);
       return {
-        totalEmailScan: action.payload.totalEmailScan,
+        totalEmailScan: totals.totalNewsLetterCount,
         data: action.payload.data,
         totalNewsLetterFound: totals.totalNewsLetterMail,
         totalEmailSize: totals.totalEmailSize,
@@ -53,7 +53,7 @@ const reducer = (
     case "SET_SCAN_DURATION": {
       const calTotal = filterScanMail(state.data, action.payload.duration);
       return {
-        totalEmailScan: state.totalEmailScan,
+        totalEmailScan: calTotal.totalNewsLetterCount,
         data: state.data,
         totalNewsLetterFound: calTotal.totalNewsLetterMail,
         totalEmailSize: calTotal.totalEmailSize,

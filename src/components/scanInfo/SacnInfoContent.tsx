@@ -17,6 +17,7 @@ const ScanInfoContent = ({
   handelStarCleanup,
 }: ScanInfoContent) => {
   const { scan } = useScanInfo();
+  const [isDisabled, setIsDisabled] = useState(false);
   const { t } = useTranslation();
   const handleSliderChange = (value: number): void => {
     if (value === 0) {
@@ -31,6 +32,10 @@ const ScanInfoContent = ({
     if (value > 50) {
       onSlideChange(ReadStatus.Active);
     }
+  };
+  const setButtonDisabled = () => {
+    setIsDisabled(true);
+    handelStarCleanup();
   };
   return (
     <>
@@ -63,7 +68,8 @@ const ScanInfoContent = ({
         <Button
           width={"88%"}
           variant={"round"}
-          onClick={() => handelStarCleanup()}
+          onClick={() => setButtonDisabled()}
+          disabled={isDisabled}
         >
           Clean my inbox
         </Button>

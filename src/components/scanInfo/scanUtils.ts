@@ -2,6 +2,7 @@ import { NewsletterInfo, ReadStatus } from "../type";
 type FilterScanMailType = {
   totalNewsLetterMail: number;
   totalEmailSize: string;
+  totalNewsLetterCount: number;
 };
 export function formatSize(kb: number) {
   const kbToMb = kb / 1024;
@@ -23,13 +24,16 @@ export const filterScanMail = (
   level: ReadStatus,
 ): FilterScanMailType => {
   let totalNewsLetterMail: number = 0;
+  let totalNewsLetterCount: number = 0;
   data.forEach((mail) => {
     if (mail.readStatus === level || mail.readStatus < level) {
       totalNewsLetterMail += mail.totalEmails;
+      totalNewsLetterCount++;
     }
   });
   return {
     totalNewsLetterMail,
     totalEmailSize: formatSize(totalNewsLetterMail * 100),
+    totalNewsLetterCount,
   };
 };

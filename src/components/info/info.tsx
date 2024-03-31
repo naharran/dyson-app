@@ -15,10 +15,13 @@ import { formatSize } from "../scanInfo/scanUtils";
 import UnsubscribeList from "./UnsubscribeList";
 
 const Info = () => {
-  const { res, error, isLoading, refetch } = useInfoResults(true);
+  const { res, isLoading, refetch } = useInfoResults(true);
   const [newsletterData, setNewsletterData] = useState<ScanResultsCalc>();
   const [dataReady, setDataReady] = useState(false);
   useEffect(() => {
+    if (!res) {
+      refetch();
+    }
     if (res) {
       const clearedSize = res?.emailsDeleted
         ? formatSize(res?.emailsDeleted * 100)
@@ -32,10 +35,9 @@ const Info = () => {
       } else {
         setDataReady(true);
       }
-    }, 5000);
+    }, 500);
   }, [res]);
   if (isLoading) return <ResoluteLoader />;
-  if (error) return <div>Error</div>;
   if (!dataReady) return <ResoluteLoader />;
   return (
     <div className="flex flex-col items-center ms-5 me-5 h-full">
