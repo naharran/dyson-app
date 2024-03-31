@@ -29,13 +29,15 @@ const Info = () => {
       // const updateNews = removeDuplicates(newsletterData?.data?? [], res.data);
       setNewsletterData({ ...res, clearedSize });
     }
-    setTimeout(() => {
+    const interval = setInterval(() => {
       if (res?.newslettersProcessed !== res?.totalNewsletterProcessed) {
         refetch();
       } else {
         setDataReady(true);
       }
-    }, 500);
+    }, 5000);
+
+    return () => clearInterval(interval);
   }, [res]);
   if (isLoading) return <ResoluteLoader />;
   if (!dataReady) return <ResoluteLoader />;
