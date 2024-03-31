@@ -36,6 +36,14 @@ const Info = () => {
         res?.newslettersProcessed < res?.totalNewsletterProcessed
       ) {
         refetch();
+      }
+      if (
+        res?.newslettersProcessed &&
+        res?.totalNewsletterProcessed &&
+        res?.newslettersProcessed === res?.totalNewsletterProcessed &&
+        res.emailsDeleted === 0
+      ) {
+        refetch();
       } else {
         setDataReady(true);
         refetch();
