@@ -30,10 +30,15 @@ const Info = () => {
       setNewsletterData({ ...res, clearedSize });
     }
     const interval = setInterval(() => {
-      if (res?.newslettersProcessed !== res?.totalNewsletterProcessed) {
+      if (
+        res?.newslettersProcessed &&
+        res?.totalNewsletterProcessed &&
+        res?.newslettersProcessed < res?.totalNewsletterProcessed
+      ) {
         refetch();
       } else {
         setDataReady(true);
+        clearInterval(interval);
       }
     }, 5000);
 
