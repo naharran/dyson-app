@@ -38,6 +38,7 @@ const Info = () => {
         refetch();
       } else {
         setDataReady(true);
+        refetch();
         clearInterval(interval);
       }
     }, 5000);
