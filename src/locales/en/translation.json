@@ -40,7 +40,10 @@
     "tails": {
       "trash": { "text": "marketial emails found" },
       "space": { "text": "These emails use up", "subText": "of storage." },
-      "mail": { "text": "You’re subscribed to", "subText": "newsletters." }
+      "mail": {
+        "text": "You have ",
+        "subText": "newsletters emails that will be deleted."
+      }
     }
   },
   "info": {

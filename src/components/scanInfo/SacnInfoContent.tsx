@@ -70,7 +70,7 @@ const ScanInfoContent = ({
           width={"88%"}
           variant={"round"}
           onClick={() => setButtonDisabled()}
-          disabled={isDisabled}
+          isDisabled={isDisabled}
         >
           Clean my inbox
         </Button>

@@ -46,7 +46,7 @@ const reducer = (
         data: action.payload.data,
         totalNewsLetterFound: totals.totalNewsLetterMail,
         totalEmailSize: totals.totalEmailSize,
-        totalNewsLetterMail: action.payload.data.length,
+        totalNewsLetterMail: totals.totalNewsLetterCount,
         duration: state.duration,
       };
     }
@@ -57,7 +57,7 @@ const reducer = (
         data: state.data,
         totalNewsLetterFound: calTotal.totalNewsLetterMail,
         totalEmailSize: calTotal.totalEmailSize,
-        totalNewsLetterMail: state.data.length,
+        totalNewsLetterMail: calTotal.totalNewsLetterCount,
         duration: action.payload.duration,
       };
     }
