@@ -1,8 +1,14 @@
 import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const Auth = () => {
+  const bc = new BroadcastChannel("update-tabs");
+  const [searchParams] = useSearchParams();
+  const processStarted = searchParams.get("processStarted");
   useEffect(() => {
-    // Attempt to close the current tab
+    if (processStarted) {
+      bc.postMessage("close-tab");
+    }
     window.close();
   }, []);
 
@@ -10,4 +16,3 @@ const Auth = () => {
 };
 
 export default Auth;
-window.close();

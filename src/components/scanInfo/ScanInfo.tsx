@@ -9,11 +9,14 @@ import useStatusCheck from "../../hooks/useStatusCheck";
 import { useNavigate } from "react-router-dom";
 
 const ScanInfo = () => {
-  const { res, isLoading } = useInfoResults();
+  const { res, isLoading, refetch } = useInfoResults();
   const { scan } = useScanInfo();
   const { dispatch } = useScanDataContext();
   const { mutate } = useStatusCheck();
   const navigate = useNavigate();
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
   useEffect(() => {
     if (res) {
       dispatch({
