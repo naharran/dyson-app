@@ -30,24 +30,20 @@ const Info = () => {
       setNewsletterData({ ...res, clearedSize });
     }
     const interval = setInterval(() => {
-      if (
-        res?.newslettersProcessed &&
-        res?.totalNewsletterProcessed &&
-        res?.newslettersProcessed < res?.totalNewsletterProcessed
-      ) {
-        refetch();
+      if (!res) {
+        return;
       }
+      const { newslettersProcessed, totalNewsletterProcessed, emailsDeleted } =
+        res;
       if (
-        res?.newslettersProcessed &&
-        res?.totalNewsletterProcessed &&
-        res?.newslettersProcessed === res?.totalNewsletterProcessed &&
-        res.emailsDeleted === 0
+        newslettersProcessed === totalNewsletterProcessed &&
+        emailsDeleted > 0
       ) {
-        refetch();
-      } else {
         setDataReady(true);
         refetch();
         clearInterval(interval);
+      } else {
+        refetch();
       }
     }, 5000);
 

@@ -17,7 +17,7 @@ export type ScanResultsProps = {
   data: NewsletterInfo[];
   totalNewsLettersFound: number;
   totalEmailScan: number;
-  emailsDeleted?: number;
+  emailsDeleted: number;
   newslettersProcessed?: number;
   totalNewsletterProcessed?: number;
 };
