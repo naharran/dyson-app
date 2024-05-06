@@ -4,12 +4,13 @@ type ContentProps = {
 };
 const Content = ({ onClick }: ContentProps) => {
   return (
-    <div className="flex flex-col h-full items-center justify-center">
-      <p className="text-48 font-Rubik mb-1 text-black"> Clean inbox for</p>
-      <p className="text-48 text-black font-Rubik mb-1">
-        {" "}
-        a <span className="text-textBlue text-48 font-Rubik"> clean mind</span>
-      </p>
+    <div className="flex flex-col items-start max-sm:items-center">
+      <div className="max-sm:w-[90%] w-[68%] max-sm:text-43  text-48 flex text-start max-sm:text-center justify-center font-Rubik mb-1 text-black">
+        <span>
+          Clean your inbox in{" "}
+          <span className="text-textBlue text-48 font-Rubik"> one click.</span>{" "}
+        </span>
+      </div>
       <div className="py-4 ps-5 pe-5">
         <p className="text-16 text-black font-Rubik text-center ">
           Remove all unwanted email subscriptions
@@ -19,7 +20,11 @@ const Content = ({ onClick }: ContentProps) => {
           reclaiming a clean inbox.
         </p>
       </div>
-      <Button width={"88%"} variant={"round"} onClick={onClick}>
+      <Button
+        className="max-md:w-[88%] w-[50%]"
+        variant={"round"}
+        onClick={onClick}
+      >
         Get started{" "}
       </Button>
     </div>

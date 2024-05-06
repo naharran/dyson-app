@@ -15,7 +15,11 @@ const CallToAction = ({ onClick }: CallToActionProps) => {
         </p>
       </div>
       <div className="flex justify-center w-full mt-8">
-        <Button width={"88%"} variant={"round"} onClick={() => onClick()}>
+        <Button
+          className="max-md:w-[88%] w-[33%]"
+          variant={"round"}
+          onClick={() => onClick()}
+        >
           {t("home.callToAction.action")}{" "}
         </Button>
       </div>

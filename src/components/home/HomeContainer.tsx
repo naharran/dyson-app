@@ -23,7 +23,11 @@ const HomeContainer = () => {
   return (
     <div className="flex flex-col h-full">
       <NavBar onClick={openAuth} />
-      <Home onClick={openAuth} />
+      <div className="flex w-full justify-center">
+        <div className="flex flex-col  w-[1200px]">
+          <Home onClick={openAuth} />
+        </div>
+      </div>
       <HomeFooter />
     </div>
   );

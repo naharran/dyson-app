@@ -26,13 +26,15 @@ const Home = ({ onClick }: HomeProps) => {
     return fact;
   };
   return (
-    <div className="flex flex-col justify-center mt-20">
-      <Content onClick={onClick} />
-      <div className="flex flex-col justify-center mt-10">
-        <div className="flex justify-evenly mb-10 w-full">
+    <div className="flex flex-col  justify-center mt-20">
+      <div className="flex max-sm:flex-col">
+        <Content onClick={onClick} />
+        <div className="flex w-[50%] max-sm:w-full max-sm:mt-10">
           <VideoPlayerContainer />
         </div>
-        <div className="flex flex-col items-start ms-8 me-8">
+      </div>
+      <div className="flex flex-col justify-center mt-10">
+        <div className="flex max-md:flex-col items-start ms-8 me-8 mt-2">
           {createFactTail()}
         </div>
         <div className="flex flex-col items-start"></div>
