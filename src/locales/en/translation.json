@@ -1,7 +1,24 @@
 {
   "test": "tesss",
   "home": {
+    "carouselHeader": {
+      "title": "But you don't have to take is from us",
+      "preColor": "here’s what",
+      "color": "our users",
+      "titleEnd": "has to say."
+    },
+    "hederList": {
+      "title": "Clean your inbox in",
+      "titleColor": "one click.",
+      "bolt1": "✅ Delete all commercial emails at once",
+      "bolt2": "✅ Choose lists to unsubscribe from",
+      "bolt3": "✅ Use AI to Clean up storage ",
+      "btn": "Scan My Inbox for Free >>"
+    },
     "factList": {
+      "title": "This a",
+      "titleColor": "done for you",
+      "titleEnd": "Email cleanser",
       "factNum1": {
         "title": "Restore deleted mails.",
         "text": "Don’t worry, you can recover your deleted mail up until 30 days."
@@ -18,7 +35,7 @@
     "callToAction": {
       "title": "Reclaim your inbox, ",
       "color": "today.",
-      "action": "Get started",
+      "action": "Scan My Inbox for Free >>",
       "helpText": "Need help setting up?",
       "support": "Contact support >"
     },

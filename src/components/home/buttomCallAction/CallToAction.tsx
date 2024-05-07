@@ -8,14 +8,18 @@ const CallToAction = ({ onClick }: CallToActionProps) => {
   const { t } = useTranslation();
   return (
     <div className="flex flex-col items-center mt-8  ms-4 me-4">
-      <div className="text-24 font-Rubik mb-1 text-black">
+      <div className="text-43 font-bold font-Rubik mb-1 text-black">
         <p>
           {t("home.callToAction.title")}
           <span className="text-textBlue">{t("home.callToAction.color")}</span>
         </p>
       </div>
       <div className="flex justify-center w-full mt-8">
-        <Button width={"88%"} variant={"round"} onClick={() => onClick()}>
+        <Button
+          className="max-md:w-[88%] w-[33%]"
+          variant={"round"}
+          onClick={() => onClick()}
+        >
           {t("home.callToAction.action")}{" "}
         </Button>
       </div>
