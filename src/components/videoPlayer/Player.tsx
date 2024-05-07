@@ -24,7 +24,7 @@ const Player = ({ player }: PlayerProps) => {
   return (
     <div
       onClick={() => setIsPlaying(true)}
-      className="bg-[url('/src/assets/mobile.svg')] relative max-sm:pt-[185.6%]  pt-[100%] bg-contain bg-no-repeat w-full flex"
+      className="bg-[url('/src/assets/mobile.svg')] relative max-sm:pt-[185.6%] bg-right  pt-[100%] bg-contain bg-no-repeat w-full flex"
     >
       <iframe
         id="player"

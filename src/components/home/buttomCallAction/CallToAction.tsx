@@ -8,7 +8,7 @@ const CallToAction = ({ onClick }: CallToActionProps) => {
   const { t } = useTranslation();
   return (
     <div className="flex flex-col items-center mt-8  ms-4 me-4">
-      <div className="text-24 font-Rubik mb-1 text-black">
+      <div className="text-43 font-bold font-Rubik mb-1 text-black">
         <p>
           {t("home.callToAction.title")}
           <span className="text-textBlue">{t("home.callToAction.color")}</span>
