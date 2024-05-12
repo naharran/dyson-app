@@ -29,7 +29,7 @@ const Player = ({ player }: PlayerProps) => {
       <iframe
         id="player"
         onClick={() => videoControllHandler()}
-        className={`${isPlaying ? "visible" : "invisible"} absolute top-[2%] rounded-[6%] w-[82%] h-[96%] left-[9%]`}
+        className={`${isPlaying ? "visible" : "invisible"} absolute top-[2%] rounded-[6%] w-[45%] h-[96%] left-[50%]`}
         src="https://www.youtube.com/embed/5EnL2WXsxNQ?enablejsapi=1&autoplay=1&controls=0&&mute=1"
         allow="autoplay"
       ></iframe>

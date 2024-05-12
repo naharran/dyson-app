@@ -35,15 +35,17 @@ const ScanInfo = () => {
     dispatch({ type: "SET_SCAN_DURATION", payload: { duration } });
   };
   return (
-    <div className="flex flex-col items-center ms-5 me-5 h-full">
-      {isLoading ? (
-        <InfoLoader />
-      ) : (
-        <ScanInfoContent
-          onSlideChange={setSliderDuration}
-          handelStarCleanup={sendReadStatus}
-        />
-      )}
+    <div className="flex flex-col items-center ms-5 me-5 h-full ">
+      <div className="w-[1200px] max-sm:w-full">
+        {isLoading ? (
+          <InfoLoader />
+        ) : (
+          <ScanInfoContent
+            onSlideChange={setSliderDuration}
+            handelStarCleanup={sendReadStatus}
+          />
+        )}
+      </div>
     </div>
   );
 };
