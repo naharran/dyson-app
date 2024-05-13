@@ -6,8 +6,13 @@ import "./index.css";
 import "./il18n";
 import { buttonTheme } from "./components/infra/buttons.ts";
 import { sliderTheme } from "./components/infra/ReSlider.tsx";
+import { radioTheme } from "./components/infra/radio.ts";
 const theme = extendTheme({
-  components: { Button: { ...buttonTheme }, Slider: sliderTheme },
+  components: {
+    Button: { ...buttonTheme },
+    Slider: sliderTheme,
+    Radio: { ...radioTheme },
+  },
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>

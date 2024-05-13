@@ -54,13 +54,34 @@
     }
   },
   "scanPage": {
-    "tails": {
-      "trash": { "text": "marketial emails found" },
-      "space": { "text": "These emails use up", "subText": "of storage." },
-      "mail": {
-        "text": "You have ",
-        "subText": "newsletters emails that will be deleted."
-      }
+    "title": "Choose what you’d like to delete.",
+    "scanOption-1": {
+      "title": "Last read email was sent over",
+      "colorText": "1 year",
+      "suffix": "ago"
+    },
+    "scanOption-2": {
+      "title": "Last read email was sent over",
+      "colorText": "6 months",
+      "suffix": "ago"
+    },
+    "scanOption-3": {
+      "title": "Last read email was sent over",
+      "colorText": "3 months",
+      "suffix": "ago"
+    },
+    "scanOption-4": {
+      "title": "Last read email was sent over",
+      "colorText": "3 months",
+      "suffix": "the last"
+    }
+  },
+  "tails": {
+    "trash": { "text": "marketial emails found." },
+    "space": { "text": "These emails use up of storage.", "subText": "" },
+    "mail": {
+      "text": "You have newsletters emails that will be deleted. ",
+      "subText": ""
     }
   },
   "info": {
