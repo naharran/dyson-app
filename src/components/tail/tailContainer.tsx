@@ -17,12 +17,12 @@ const TailContainer = ({
   useStyle = true,
 }: TailContainerProps) => {
   const style = useStyle
-    ? "flex shadow-lg justify-start mt-5 rounded-b-2xl"
+    ? "flex shadow-sm justify-start mt-2 rounded-b-2xl"
     : "";
   return (
     <div className={style}>
       <div className="flex py-2.5 ms-8">
-        <Icon width={35} height={35} />
+        <Icon width={25} height={25} />
         <TailContent number={number} text={text} subText={subText} />
       </div>
     </div>

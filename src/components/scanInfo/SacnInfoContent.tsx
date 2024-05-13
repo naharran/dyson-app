@@ -85,7 +85,7 @@ const ScanInfoContent = ({
             {optionValue === "3" && (
               <ScanDetails
                 totalNewsLetterMail={scan?.totalNewsLetterMail ?? 0}
-                totalEmailSize={scan?.totalEmailSize ?? 0}
+                totalEmailSize={scan?.totalEmailSize ?? "0"}
                 totalNewsLetterFound={scan?.totalNewsLetterFound ?? "0"}
               />
             )}
