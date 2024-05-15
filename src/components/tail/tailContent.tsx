@@ -22,7 +22,7 @@ const TailContent = ({ number, text, subText }: TailContentProps) => {
     );
   };
   return (
-    <div className=" ml-2 flex flex-col justify-center text-14 font-Rubik text-black text-start">
+    <div className=" ml-2 flex flex-col justify-center text-[20px] font-Rubik text-black text-start">
       {renderText()}
     </div>
   );
