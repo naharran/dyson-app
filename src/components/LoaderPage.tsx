@@ -62,7 +62,6 @@ const LoaderPage = () => {
         <p className="mt-5 text-18 text-textBlue font-bold mb-2">
           {t("loadingPage.remembersList.rem3")}
         </p>
-        ,
         <div className="flex w-[50%] ps-5 pe-5">
           <Progress className="w-full" size="sm" value={loadingProgress} />
         </div>
