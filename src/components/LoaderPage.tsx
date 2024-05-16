@@ -10,7 +10,7 @@ import { Progress } from "@chakra-ui/react";
 const LoaderPage = () => {
   const naviget = useNavigate();
   const { t } = useTranslation();
-  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingProgress, setLoadingProgress] = useState(1);
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -20,16 +20,11 @@ const LoaderPage = () => {
     },
   };
   const renderTextRemembers = (): React.ReactNode => {
-    const list: React.ReactNode[] = [];
-
-    loadingRemembers.forEach((item, index) => {
-      list.push(
-        <p className="mb-2" key={`remb${index}`}>
-          {t(item)}{" "}
-        </p>,
-      );
-    });
-    return list;
+    return loadingRemembers.map((item, index) => (
+      <p className="mb-2" key={`remb${index}`}>
+        {t(item)}{" "}
+      </p>
+    ));
   };
 
   useEffect(() => {
@@ -52,19 +47,26 @@ const LoaderPage = () => {
   }, [naviget]);
   return (
     <div className="flex flex-col h-full items-center">
-      <p className="mt-10 text-24 text-black">{t("loadingPage.title")} </p>
-      <p className="text-16 text-black">{t("loadingPage.subTitle")} </p>
-      <div className="mt-10">
-        <Lottie options={defaultOptions} height={200} width={200} />
+      <div className="flex flex-col items-center w-[1200px] max-sm:w-full mt-20">
+        <p className="mt-10  text-34 max-sm:text-24 font-bold  text-black">
+          {t("loadingPage.title")}{" "}
+        </p>
+        <p className="text-16 text-black">{t("loadingPage.subTitle")} </p>
+        <div className="mt-10">
+          <Lottie options={defaultOptions} height={200} width={200} />
+        </div>
+        <p className="mt-10 mb-2 max-sm:text-22 text-24 font-bold ps-5 pe-5">
+          {t("loadingPage.remembers")}
+        </p>
+        {renderTextRemembers()}
+        <p className="mt-5 text-18 text-textBlue font-bold mb-2">
+          {t("loadingPage.remembersList.rem3")}
+        </p>
+        ,
+        <div className="flex w-[50%] ps-5 pe-5">
+          <Progress className="w-full" size="sm" value={loadingProgress} />
+        </div>
       </div>
-      <div className="flex w-full ps-5 pe-5">
-        <Progress className="w-full" size="sm" value={loadingProgress} />
-      </div>
-      <p className="mt-10 mb-2 text-base ps-5 pe-5">
-        {t("loadingPage.remembers")}
-      </p>
-
-      {renderTextRemembers()}
     </div>
   );
 };

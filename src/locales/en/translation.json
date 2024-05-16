@@ -44,13 +44,13 @@
     }
   },
   "loadingPage": {
-    "title": "Loading your data...",
-    "subTitle": "this might take a few minuets.",
+    "title": "Organizing Your Emails...",
+    "subTitle": "Decide what goes away in a moment!.",
     "remembers": "Here are some friendly reminders-",
     "remembersList": {
-      "rem1": "☝🏻 You won't lose emails from private senders.",
-      "rem2": "🔄 You can rejoin lists in case you regret.",
-      "rem3": "🧘‍♀️ An empty mailbox reduces digital stress."
+      "rem1": "🧘‍♀️ An empty mailbox reduces digital stress.",
+      "rem2": "✨ You won’t loose any private emails",
+      "rem3": "You still need to tell us what to erase >>"
     }
   },
   "scanPage": {
