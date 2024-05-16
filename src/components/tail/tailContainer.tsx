@@ -7,7 +7,7 @@ export type TailContainerProps = {
   text: string;
   subText?: string;
   useStyle?: string;
-  size: number;
+  size?: number;
 };
 
 const TailContainer = ({
