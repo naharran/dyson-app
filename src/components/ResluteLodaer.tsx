@@ -16,7 +16,7 @@ const ResoluteLoader = () => {
       <p className="mt-10 text-24 text-black">{t("loadingPage.title")} </p>
       <p className="text-16 text-black">{t("loadingPage.subTitle")} </p>
       <div className="mt-20">
-        <Lottie options={defaultOptions} height={375} width={375} />;
+        <Lottie options={defaultOptions} height={375} width={375} />
       </div>
     </div>
   );
