@@ -44,14 +44,15 @@
     }
   },
   "loadingPage": {
-    "title": "Organizing Your Emails...",
-    "subTitle": "Decide what goes away in a moment!.",
+    "title": "Cleaning Your Inbox...",
+    "subTitle": "this might take a few minuets.",
     "remembers": "Here are some friendly reminders-",
     "remembersList": {
       "rem1": "🧘‍♀️ An empty mailbox reduces digital stress.",
       "rem2": "✨ You won’t loose any private emails",
       "rem3": "You still need to tell us what to erase >>"
-    }
+    },
+    "comment": "By clicking the button below, you give permission to delete emails. Don’t worry, you’ll be able to restore them."
   },
   "scanPage": {
     "title": "Choose what you’d like to delete.",
