@@ -10,8 +10,8 @@ const FactTail = ({ Icon, title, text }: FactTailProps) => {
       <div>
         <Icon />
       </div>
-      <div className="flex flex-col font-Rubik text-black text-center mt-5">
-        <p className="text-24">{title} </p>
+      <div className="flex flex-col font-Rubik text-black text-left mt-5">
+        <p className="text-24 font-bold">{title} </p>
         <p className="text-16">{text}</p>
       </div>
     </div>
