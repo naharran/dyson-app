@@ -7,7 +7,7 @@ export const checkStatus = async (): Promise<{
   initLength: number;
   idsLength: number;
 }> => {
-  const res = await axios.get(`${baseURL}checkStatus`, {
+  const res = await axios.get(`${baseURL}checkstatus`, {
     withCredentials: true,
   });
   return res.data;
@@ -804,8 +804,8 @@ export const getResult = async (
   //   totalEmailScan: 385,
   // };
   const url = scan
-    ? `${baseURL}getResults?duration=${duration}&scan=${true}`
-    : `${baseURL}getResults?duration=${duration}&scan=${false}`;
+    ? `${baseURL}getresults?duration=${duration}&scan=${true}`
+    : `${baseURL}getresults?duration=${duration}&scan=${false}`;
   const res = await axios.get(url, {
     withCredentials: true,
   });
@@ -817,7 +817,7 @@ export const startStatusCheck = async (
   const body = {
     readStatus,
   };
-  const res = await axios.post(`${baseURL}StatusCheck`, body, {
+  const res = await axios.post(`${baseURL}statuscheck`, body, {
     withCredentials: true,
   });
   return res.data;
