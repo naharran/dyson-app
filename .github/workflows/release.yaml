@@ -60,7 +60,9 @@ jobs:
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release --branch $GITHUB_REF_NAME
+        run: |
+          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+          npx semantic-release --branches $TAG_NAME
 
       - name: Add and commit changes
         run: |
@@ -69,14 +71,15 @@ jobs:
 
       - name: Push changes to release branch
         run: |
-          git push origin $GITHUB_REF_NAME
+          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
+          git push origin $TAG_NAME
 
       - name: Create Pull Request for Release
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(release): ${nextRelease.version} [skip ci]"
-          branch: $GITHUB_REF_NAME
+          branch: ${{ github.ref_name }}
           title: "Release ${nextRelease.version}"
           body: "This pull request includes the release of version ${nextRelease.version}."
           base: master
