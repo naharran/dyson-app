@@ -37,13 +37,14 @@ jobs:
 
       - name: Create and switch to release branch
         run: |
+          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
           git fetch origin
-          if git rev-parse --verify origin/release-branch; then
-            git checkout release-branch
-            git pull origin release-branch
+          if git rev-parse --verify origin/$TAG_NAME; then
+            git checkout $TAG_NAME
+            git pull origin $TAG_NAME
           else
-            git checkout -b release-branch
-            git push --set-upstream origin release-branch
+            git checkout -b $TAG_NAME
+            git push --set-upstream origin $TAG_NAME
           fi
 
       - name: Configure Git to handle divergent branches
@@ -54,12 +55,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin master --allow-unrelated-histories --strategy-option theirs
+          git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
 
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: npx semantic-release --branch $GITHUB_REF_NAME
 
       - name: Add and commit changes
         run: |
@@ -68,14 +69,14 @@ jobs:
 
       - name: Push changes to release branch
         run: |
-          git push origin release-branch
+          git push origin $GITHUB_REF_NAME
 
       - name: Create Pull Request for Release
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(release): ${nextRelease.version} [skip ci]"
-          branch: release-branch
+          branch: $GITHUB_REF_NAME
           title: "Release ${nextRelease.version}"
           body: "This pull request includes the release of version ${nextRelease.version}."
           base: master
