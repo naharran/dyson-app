@@ -29,7 +29,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin master --strategy-option theirs
+          git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
 
       - name: Run Semantic Release
         env:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Push changes to release branch
         run: |
-          git push origin release-branch
+          git push --set-upstream origin release-branch
 
       - name: Create Pull Request for Release
         uses: peter-evans/create-pull-request@v3
