@@ -2,8 +2,7 @@ name: Release
 
 on:
   push:
-    tags:
-      - "v-release*.*" # Adjust the tag pattern as needed
+    branches: ["master", "release-branch"]
 
 permissions:
   contents: read # for checkout
@@ -59,8 +58,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
-          npx semantic-release --branches $TAG_NAME
+
+          npx semantic-release
 
       - name: Add and commit changes
         run: |
