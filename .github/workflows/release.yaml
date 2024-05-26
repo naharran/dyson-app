@@ -37,14 +37,13 @@ jobs:
 
       - name: Create and switch to release branch
         run: |
-          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
           git fetch origin
-          if git rev-parse --verify origin/$TAG_NAME; then
-            git checkout $TAG_NAME
-            git pull origin $TAG_NAME
+          if git rev-parse --verify origin/release-branch; then
+            git checkout release-branch
+            git pull origin release-branch
           else
-            git checkout -b $TAG_NAME
-            git push --set-upstream origin $TAG_NAME
+            git checkout -b release-branch
+            git push --set-upstream origin release-branch
           fi
 
       - name: Configure Git to handle divergent branches
@@ -56,7 +55,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
-
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -71,15 +69,14 @@ jobs:
 
       - name: Push changes to release branch
         run: |
-          TAG_NAME=$(echo $GITHUB_REF | sed 's/refs\/tags\///')
-          git push origin $TAG_NAME
+          git push origin release-branch
 
       - name: Create Pull Request for Release
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(release): ${nextRelease.version} [skip ci]"
-          branch: ${{ github.ref_name }}
+          branch: release-branch
           title: "Release ${nextRelease.version}"
           body: "This pull request includes the release of version ${nextRelease.version}."
           base: master
