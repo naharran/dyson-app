@@ -1,8 +1,7 @@
 name: Release
 
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - master
 
@@ -11,7 +10,6 @@ permissions:
 
 jobs:
   release:
-    if: github.event.pull_request.merged == true
     name: Release
     runs-on: ubuntu-latest
     permissions:
