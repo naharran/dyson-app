@@ -58,9 +58,10 @@ jobs:
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ env.TAG_NAME }}
         run: |
 
-          npx semantic-release
+          npx semantic-release --tag $TAG_NAME --no-ci
 
       - name: Add and commit changes
         run: |
