@@ -1,56 +1,33 @@
 name: Release
-
 on:
   push:
-    tags:
-      - "v-release*.*" # Adjust the tag pattern as needed
+    branches: ["master"]
+permissions:
+  contents: read # for checkout
 
 jobs:
   release:
+    name: Release
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: "20.13.1"
-
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
       - name: Install dependencies
-        run: npm install
-
-      - name: Create and switch to release branch
-        run: |
-          git checkout -b release-branch
-
-      - name: Pull latest changes from master and merge
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
-
-      - name: Run Semantic Release
+        run: npm clean-install
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: npm audit signatures
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
-
-      - name: Add and commit changes
-        run: |
-          git add .
-          git commit -m "update release notes"
-
-      - name: Push changes to release branch
-        run: |
-          git push --set-upstream origin release-branch
-
-      - name: Create Pull Request for Release
-        uses: peter-evans/create-pull-request@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore(release): ${nextRelease.version} [skip ci]"
-          branch: release-branch
-          title: "Release ${nextRelease.version}"
-          body: "This pull request includes the release of version ${nextRelease.version}."
-          base: master
