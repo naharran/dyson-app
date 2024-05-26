@@ -1,7 +1,10 @@
 name: Release
+
 on:
   push:
-    branches: ["master"]
+    tags:
+      - "v-release*.*"
+
 permissions:
   contents: read # for checkout
 
@@ -14,11 +17,13 @@ jobs:
       issues: write # to be able to comment on released issues
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -32,14 +37,20 @@ jobs:
 
       - name: Create and switch to release branch
         run: |
-          git checkout -b  release-branch
-          git push --set-upstream origin release-branch
+          git fetch origin
+          if git rev-parse --verify origin/release-branch; then
+            git checkout release-branch
+            git pull origin release-branch
+          else
+            git checkout -b release-branch
+            git push --set-upstream origin release-branch
+          fi
 
       - name: Pull latest changes from master and merge
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
+          git pull origin master --allow-unrelated-histories --strategy-option theirs
 
       - name: Run Semantic Release
         env:
