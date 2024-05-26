@@ -35,6 +35,15 @@ jobs:
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
 
+      - name: Fetch all tags
+        run: git fetch --tags
+
+      - name: Extract Tag Name
+        id: extract_tag
+        run: |
+          TAG_NAME=${GITHUB_REF/refs\/tags\//}
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
       - name: Create and switch to release branch
         run: |
           git fetch origin
@@ -55,24 +64,40 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git pull origin master --allow-unrelated-histories --strategy-option theirs  # or use --strategy-option ours
+
+      - name: Check if tag already exists
+        id: check_tag
+        run: |
+          TAG_NAME=${{ env.TAG_NAME }}
+          if git rev-parse "refs/tags/$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME already exists"
+            echo "::set-output name=tag_exists::true"
+          else
+            echo "::set-output name=tag_exists::false"
+          fi
+
       - name: Run Semantic Release
+        if: steps.check_tag.outputs.tag_exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG_NAME: ${{ env.TAG_NAME }}
         run: |
-
+          echo "Running Semantic Release with tag $TAG_NAME"
           npx semantic-release --tag $TAG_NAME --no-ci
 
       - name: Add and commit changes
+        if: steps.check_tag.outputs.tag_exists == 'false'
         run: |
           git add .
           git commit -m "chore(release): update release notes [skip ci]"
 
       - name: Push changes to release branch
+        if: steps.check_tag.outputs.tag_exists == 'false'
         run: |
           git push origin release-branch
 
       - name: Create Pull Request for Release
+        if: steps.check_tag.outputs.tag_exists == 'false'
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -80,4 +105,4 @@ jobs:
           branch: release-branch
           title: "Release ${nextRelease.version}"
           body: "This pull request includes the release of version ${nextRelease.version}."
-          base: master
+          base:
