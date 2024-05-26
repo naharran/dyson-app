@@ -17,5 +17,4 @@ const FactTail = ({ Icon, title, text }: FactTailProps) => {
     </div>
   );
 };
-
 export default FactTail;
