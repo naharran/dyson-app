@@ -21,15 +21,24 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Pull latest changes from master
+      - name: Create and switch to release branch
         run: |
           git checkout -b release-branch
-          git pull origin master
+
+      - name: Pull latest changes from master and merge
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull origin master --strategy-option theirs
 
       - name: Run Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
+
+      - name: Push changes to release branch
+        run: |
+          git push origin release-branch
 
       - name: Create Pull Request for Release
         uses: peter-evans/create-pull-request@v3
