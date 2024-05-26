@@ -8,7 +8,7 @@ import { loadingRemembers } from "./const";
 import { Progress } from "@chakra-ui/react";
 
 const LoaderPage = () => {
-  const naviget = useNavigate();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [loadingProgress, setLoadingProgress] = useState(1);
   const defaultOptions = {
@@ -37,14 +37,14 @@ const LoaderPage = () => {
           setLoadingProgress(updateNumber);
           setTimeout(() => fetchData(), 5000);
         } else {
-          naviget("/scan");
+          navigate("/scan");
         }
       } catch (err) {
         console.log(err);
       }
     }
     fetchData();
-  }, [naviget]);
+  }, [navigate]);
   return (
     <div className="flex flex-col h-full items-center">
       <div className="flex flex-col items-center w-[1200px] max-sm:w-full mt-20">
