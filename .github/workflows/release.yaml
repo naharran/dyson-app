@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     tags:
-      - "v-release*.*"
+      - "v-release*.*" # Adjust the tag pattern as needed
 
 permissions:
   contents: read # for checkout
@@ -45,6 +45,10 @@ jobs:
             git checkout -b release-branch
             git push --set-upstream origin release-branch
           fi
+
+      - name: Configure Git to handle divergent branches
+        run: |
+          git config pull.rebase false  # Using merge strategy, you can change to true for rebase or 'ff only' for fast-forward only
 
       - name: Pull latest changes from master and merge
         run: |
