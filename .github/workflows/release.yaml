@@ -36,6 +36,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release
 
+      - name: Add and commit changes
+        run: |
+          git add .
+          git commit -m "update release notes"
+
       - name: Push changes to release branch
         run: |
           git push --set-upstream origin release-branch
