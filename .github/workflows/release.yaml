@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: ["master", "release-branch"]
+    branches: ["master"]
 
 permissions:
   contents: read # for checkout
