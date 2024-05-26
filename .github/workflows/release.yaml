@@ -61,7 +61,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx semantic-release --no-ci
+          npx semantic-release
 
       - name: Add and commit changes
         run: |
