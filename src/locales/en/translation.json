@@ -56,6 +56,18 @@
   },
   "scanPage": {
     "title": "Choose what you’d like to delete.",
+    "lightClean": {
+      "title": "Light Clean:",
+      "subTitle": "Unsubscribe me from mail lists not opened in the last year",
+      "discription": "Choose this to completely clear your inbox of all commercial subscriptions. It's like pressing a reset button on your email, helping you start fresh with a cleaner, more manageable inbox.",
+      "btn": "Reset My Inbox"
+    },
+    "freshStart": {
+      "title": "Fresh Start:",
+      "subTitle": "Unsubscribe me from all commercial mail lists",
+      "discription": "This option targets minimal maintenance, removing you from any mailing lists you have not interacted with over the past year. It's designed for those who want to declutter without missing out on potentially useful communications. ",
+      "btn": "Clean Up Old Subscriptions"
+    },
     "scanOption-1": {
       "title": "Last read email was sent over",
       "colorText": "1 year",

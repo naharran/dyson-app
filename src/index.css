@@ -19,3 +19,7 @@ body {
   src: url("https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap")
     format("truetype");
 }
+.tailwind-border {
+  border: 1px solid;
+  border-image: linear-gradient(to right, #471bff, #7c5cff) 1;
+}
