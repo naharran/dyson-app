@@ -4,8 +4,9 @@ import { ReactComponent as Light } from "./../../assets/LightClean.svg";
 import { Button } from "@chakra-ui/react";
 type ScanDescriptionProps = {
   onClick: (value: string) => void;
+  isDisabled: boolean;
 };
-const FreshStart = ({ onClick }: ScanDescriptionProps) => {
+const FreshStart = ({ onClick, isDisabled }: ScanDescriptionProps) => {
   const { t } = useTranslation();
   return (
     <div className="flex w-full tailwind-border font-Inter flex-col px-12 pb-4 pt-4">
@@ -33,6 +34,7 @@ const FreshStart = ({ onClick }: ScanDescriptionProps) => {
           border={"1px solid"}
           padding={"2rem"}
           background={"bg-customGradient"}
+          disabled={isDisabled}
         >
           {t("scanPage.freshStart.btn")}
         </Button>

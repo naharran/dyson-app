@@ -4,8 +4,9 @@ import { ReactComponent as Light } from "./../../assets/light_clean.svg";
 import { Button } from "@chakra-ui/react";
 type ScanDescriptionProps = {
   onClick: (value: string) => void;
+  isDisabled: boolean;
 };
-const LightClean = ({ onClick }: ScanDescriptionProps) => {
+const LightClean = ({ onClick, isDisabled }: ScanDescriptionProps) => {
   const { t } = useTranslation();
   return (
     <div className="flex w-full tailwind-border font-Inter flex-col px-12 pb-4 pt-4">
@@ -30,6 +31,7 @@ const LightClean = ({ onClick }: ScanDescriptionProps) => {
           border={"1px solid"}
           padding={"2rem"}
           background={"white"}
+          disabled={isDisabled}
         >
           {t("scanPage.lightClean.btn")}
         </Button>
