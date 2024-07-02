@@ -7,7 +7,10 @@ type ScanDescriptionProps = {
 const ScanDescription = ({ onClick }: ScanDescriptionProps) => {
   const [isDisabled, setIsDisabled] = useState(false);
   const btnClick = (value: string) => {
-    setIsDisabled(true);
+    if (isDisabled) {
+      return;
+    }
+    setIsDisabled(() => true);
     onClick(value);
   };
   return (

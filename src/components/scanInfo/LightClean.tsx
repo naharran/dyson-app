@@ -26,7 +26,7 @@ const LightClean = ({ onClick, isDisabled }: ScanDescriptionProps) => {
           width={"80"}
           variant={"round"}
           onClick={() => onClick("4")}
-          className="text-24"
+          className={`${isDisabled ? "pointer-events-none" : "pointer-events-auto"} text-24`}
           color="#7C5CFF"
           border={"1px solid"}
           padding={"2rem"}
