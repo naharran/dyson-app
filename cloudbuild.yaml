@@ -13,7 +13,7 @@ steps:
     args:
       - "-c"
       - |
-        export VITE_FUNCTIONS_URL=http://localhost:3001/
+        export VITE_FUNCTIONS_URL=https://staging.api.reclaimm.com/
         npm run build
 
   # Step 3: Deploy to the GCS bucket
