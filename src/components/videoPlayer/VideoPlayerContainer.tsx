@@ -5,7 +5,9 @@ const VideoPlayerContainer = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [player, setPlayer] = useState<any>();
   useEffect(() => {
-    setPlayer(new window.YT.Player("player"));
+    if (window?.YT && window?.YT?.Player) {
+      setPlayer(new window.YT.Player("player"));
+    }
     return () => {
       if (player) {
         player.destroy();
