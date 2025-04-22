@@ -1,0 +1,36 @@
+steps:
+  # Step 1: Install dependencies
+  - name: "node:18"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        npm install
+
+  # Step 2: Build the React app
+  - name: "node:18"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        export VITE_FUNCTIONS_URL=http://localhost:3001/
+        npm run build
+
+  # Step 3: Deploy to the GCS bucket
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gsutil -m rsync -r ./build gs://staging.reclaimm.com
+
+  # Set the GCS bucket to serve as a website
+  - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        gsutil web set -m index.html -e index.html gs://staging.reclaimm.com
+
+options:
+  logging: CLOUD_LOGGING_ONLY
