@@ -22,7 +22,7 @@ steps:
     args:
       - "-c"
       - |
-        gsutil -m rsync -r ./build gs://staging.reclaimm.com
+        gsutil -m rsync -r ./dist gs://staging.reclaimm.com
 
   # Set the GCS bucket to serve as a website
   - name: "gcr.io/google.com/cloudsdktool/cloud-sdk"
