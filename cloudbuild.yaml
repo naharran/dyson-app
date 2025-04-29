@@ -14,6 +14,7 @@ steps:
       - "-c"
       - |
         export VITE_FUNCTIONS_URL=https://staging.api.reclaimm.com/
+        export VITE_AUTH_URL=https://staging.api.reclaimm.com/auth/
         npm run build
 
   # Step 3: Deploy to the GCS bucket
