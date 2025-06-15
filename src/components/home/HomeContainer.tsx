@@ -13,7 +13,11 @@ const HomeContainer = () => {
 
   const openAuth = () => {
     const windowFeatures = "left=500,top=500,width=320,height=320";
-    window.open(import.meta.env.VITE_AUTH_URL, "authWindow", windowFeatures);
+    window.open(
+      "https://staging.api.reclaimm.com",
+      "authWindow",
+      windowFeatures,
+    );
   };
   useEffect(() => {
     bc.onmessage = () => {
