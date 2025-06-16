@@ -2,19 +2,20 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const Auth = () => {
-  const bc = new BroadcastChannel("update-tabs");
   const [searchParams] = useSearchParams();
   const processStarted = searchParams.get("processStarted");
+
   useEffect(() => {
     if (processStarted) {
-      bc.postMessage("close-tab");
+      const bc = new BroadcastChannel("update-tabs");
+      bc.postMessage("close-tab"); // נשאר כמו שהיה
+      bc.close(); // מנקה מיד אחרי השליחה
     }
-    setTimeout(() => {
-      window.close();
-    }, 200); // חשוב!
+
+    // לא מנסים לסגור את החלון — זה יטופל בצד של ה-main window
   }, []);
 
-  return <div></div>;
+  return <div>Authentication successful. You can close this window.</div>;
 };
 
 export default Auth;
