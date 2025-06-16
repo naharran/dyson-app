@@ -9,7 +9,9 @@ const Auth = () => {
     if (processStarted) {
       bc.postMessage("close-tab");
     }
-    window.close();
+    setTimeout(() => {
+      window.close();
+    }, 200); // חשוב!
   }, []);
 
   return <div></div>;
