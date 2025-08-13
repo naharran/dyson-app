@@ -4,9 +4,9 @@ import { useSearchParams } from "react-router-dom";
 const Auth = () => {
   const [searchParams] = useSearchParams();
   const processStarted = searchParams.get("processStarted");
-
   useEffect(() => {
     if (processStarted) {
+      console.log("process started");
       const bc = new BroadcastChannel("update-tabs");
       bc.postMessage("close-tab"); // נשאר כמו שהיה
       bc.close(); // מנקה מיד אחרי השליחה

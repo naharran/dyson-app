@@ -7,7 +7,7 @@ export const checkStatus = async (): Promise<{
   initLength: number;
   idsLength: number;
 }> => {
-  const res = await axios.get(`${baseURL}checkstatus`, {
+  const res = await axios.get(`${baseURL}checkStatus`, {
     withCredentials: true,
   });
   return res.data;
