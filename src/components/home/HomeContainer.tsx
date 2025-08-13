@@ -14,30 +14,18 @@ const HomeContainer = () => {
   }
 
   const openAuth = () => {
-    const features = [
-      "toolbar=no",
-      "menubar=no",
-      "status=no",
-      "resizable=yes",
-      "scrollbars=yes",
-      "width=500",
-      "height=600",
-      "top=200",
-      "left=300",
-    ].join(",");
-
+    const windowFeatures = "left=500,top=500,width=320,height=320";
     authWindowRef.current = window.open(
-      "http://localhost:8080/auth",
-      `authWindow_${Date.now()}`, // שם חדש בכל פתיחה מונע reuse של חלון קיים
-      features,
+      "https://staging.api.reclaimm.com/auth",
+      "authWindow",
+      windowFeatures,
     );
   };
 
   useEffect(() => {
     const bc = new BroadcastChannel("update-tabs");
-    console.log("use effect");
+
     bc.onmessage = () => {
-      console.log("message recived");
       onChildWindowClose();
     };
 
